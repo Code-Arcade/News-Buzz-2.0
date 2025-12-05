@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Buzz | Your Daily News Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="background-gradient"></div>
+
+    <!-- Header -->
+    <header class="glass-header">
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fa-solid fa-bolt"></i>
+                <h1>News Buzz</h1>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active"><i class="fa-solid fa-home"></i> Home</a></li>
+                    <li><a href="#categories"><i class="fa-solid fa-layer-group"></i> Categories</a></li>
+                    <li><a href="admin/dashboard.html" class="btn-primary"><i class="fa-solid fa-user-shield"></i>
+                            Admin</a></li>
+                </ul>
+                <div class="mobile-menu-btn">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="container">
+                <div class="hero-content">
+                    <span class="badge">Code Arcade</span>
+                    <h2 class="hero-title">Free Source Code 🎁</h2>
+                    <p class="hero-subtitle">Stay informed with the most up-to-date news from around the world, curated
+                        just for you.</p>
+                    <a href="#articles" class="btn-hero">Explore News <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+                <div class="hero-visual">
+                    <div class="floating-card card-1">
+                        <i class="fa-solid fa-microchip"></i>
+                        <span>Tech</span>
+                    </div>
+                    <div class="floating-card card-2">
+                        <i class="fa-solid fa-football"></i>
+                        <span>Sports</span>
+                    </div>
+                    <div class="floating-card card-3">
+                        <i class="fa-solid fa-briefcase"></i>
+                        <span>Business</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search & Filter -->
+        <section class="search-section" id="categories">
+            <div class="container">
+                <div class="glass-panel search-wrapper">
+                    <div class="search-box">
+                        <i class="fa-solid fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="Search articles...">
+                    </div>
+                    <div class="filter-box">
+                        <i class="fa-solid fa-filter"></i>
+                        <select id="categoryFilter">
+                            <option value="">All Categories</option>
+                            <option value="Technology">Technology</option>
+                            <option value="Sports">Sports</option>
+                            <option value="Entertainment">Entertainment</option>
+                            <option value="Health">Health</option>
+                            <option value="Business">Business</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Articles Grid -->
+        <section class="articles-section" id="articles">
+            <div class="container">
+                <div class="section-header">
+                    <h3>Latest Articles</h3>
+                    <div class="line"></div>
+                </div>
+                <div class="articles-container" id="articlesContainer">
+                    <!-- Articles will be loaded here dynamically -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="glass-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h2><i class="fa-solid fa-bolt"></i> News Buzz</h2>
+                    <p>Your trusted source for daily news</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+                <div class="footer-copyright">
+                    <p>Developed by <a href="https://www.youtube.com/channel/UC6McNBm7VIaLlwAjKOP5_VA" target="_blank"
+                            rel="noopener noreferrer">Codearcade</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Auth Modal -->
+    <div id="authModal" class="modal">
+        <div class="modal-content glass-panel">
+            <span class="close">&times;</span>
+            <div class="auth-tabs">
+                <button class="tab-btn active" data-tab="login">Login</button>
+                <button class="tab-btn" data-tab="signup">Sign Up</button>
+            </div>
+
+            <div id="loginTab" class="tab-content active">
+                <h3>Welcome Back</h3>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <input type="text" id="loginUsername" placeholder="Username" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="loginPassword" placeholder="Password" required>
+                    </div>
+                    <button type="submit" class="login-btn-main">Login</button>
+                </form>
+            </div>
+
+            <div id="signupTab" class="tab-content">
+                <h3>Create Account</h3>
+                <form id="signupForm">
+                    <div class="form-group">
+                        <input type="text" id="signupUsername" placeholder="Username" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="signupPassword" placeholder="Password" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="signupConfirmPassword" placeholder="Confirm Password" required>
+                    </div>
+                    <button type="submit" class="login-btn-main">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

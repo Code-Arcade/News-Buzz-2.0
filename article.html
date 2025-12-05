@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article - News Buzz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .article-detail {
+            background: white;
+            border-radius: var(--radius-md);
+            padding: 40px;
+            box-shadow: var(--shadow-md);
+            margin: 40px 0;
+        }
+
+        .article-detail-image {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            border-radius: var(--radius-md);
+            margin-bottom: 30px;
+        }
+
+        .article-detail-category {
+            background: rgba(67, 97, 238, 0.1);
+            color: var(--primary-color);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .article-detail-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+            line-height: 1.2;
+        }
+
+        .article-detail-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+            margin-bottom: 30px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .back-link:hover {
+            gap: 12px;
+        }
+
+        .comments-section {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-lg);
+            padding: 50px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            margin: 40px 0;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .comments-section h3 {
+            margin-bottom: 35px;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .comments-section h3 i {
+            color: var(--primary-color);
+            font-size: 1.6rem;
+        }
+
+        .comment {
+            padding: 25px;
+            background: linear-gradient(135deg, #ffffff, #f8f9fa);
+            border-radius: var(--radius-md);
+            margin-bottom: 20px;
+            border-left: 4px solid var(--primary-color);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        .comment:hover {
+            transform: translateX(5px);
+            box-shadow: 0 6px 20px rgba(67, 97, 238, 0.15);
+        }
+
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid rgba(67, 97, 238, 0.1);
+        }
+
+        .comment-author {
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .comment-author i {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+        }
+
+        .comment-date {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .comment-date::before {
+            content: '•';
+            color: var(--primary-color);
+        }
+
+        .comment-text {
+            color: var(--text-dark);
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .comment-form {
+            margin-top: 35px;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.03), rgba(72, 149, 239, 0.03));
+            border-radius: var(--radius-md);
+            border: 2px dashed rgba(67, 97, 238, 0.2);
+        }
+
+        .comment-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .comment-form .form-group p {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            padding: 12px 18px;
+            background: white;
+            border-radius: var(--radius-sm);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .comment-form textarea {
+            width: 100%;
+            padding: 18px;
+            border: 2px solid #e0e0e0;
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            font-family: 'Outfit', sans-serif;
+            background: white;
+            transition: var(--transition);
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .comment-form textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(67, 97, 238, 0.1);
+            background: white;
+        }
+
+        .comment-form .submit-btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            padding: 14px 30px;
+            font-size: 1.05rem;
+            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+        }
+
+        .comment-form .submit-btn:hover {
+            box-shadow: 0 6px 20px rgba(67, 97, 238, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .login-message {
+            text-align: center;
+            padding: 50px 30px;
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.05), rgba(72, 149, 239, 0.05));
+            border-radius: var(--radius-md);
+            border: 2px dashed rgba(67, 97, 238, 0.2);
+        }
+
+        .login-message i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .login-message p {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+
+        .login-message button {
+            margin-top: 15px;
+            padding: 14px 35px;
+            font-size: 1.05rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+        }
+
+        .login-message button:hover {
+            box-shadow: 0 6px 20px rgba(67, 97, 238, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .logout-btn {
+            background: linear-gradient(135deg, #dc3545, #c82333);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            transition: var(--transition);
+            font-size: 0.9rem;
+            box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3);
+        }
+
+        .logout-btn:hover {
+            background: linear-gradient(135deg, #c82333, #bd2130);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(220, 53, 69, 0.4);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background-gradient"></div>
+
+    <header class="glass-header">
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fa-solid fa-bolt"></i>
+                <h1>News Buzz</h1>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html"><i class="fa-solid fa-home"></i> Home</a></li>
+                    <li><a href="admin/dashboard.html" class="btn-primary"><i class="fa-solid fa-user-shield"></i>
+                            Admin</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Article content will be loaded here -->
+        </div>
+    </main>
+
+    <footer class="glass-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h2><i class="fa-solid fa-bolt"></i> News Buzz</h2>
+                    <p>Your trusted source for daily news</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+                <div class="footer-copyright">
+                    <p>&copy; 2024 News Buzz. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Auth Modal -->
+    <div id="authModal" class="modal">
+        <div class="modal-content glass-panel">
+            <span class="close">&times;</span>
+            <div class="auth-tabs">
+                <button class="tab-btn active" data-tab="login">Login</button>
+                <button class="tab-btn" data-tab="signup">Sign Up</button>
+            </div>
+
+            <div id="loginTab" class="tab-content active">
+                <h3>Welcome Back</h3>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <input type="text" id="loginUsername" placeholder="Username" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="loginPassword" placeholder="Password" required>
+                    </div>
+                    <button type="submit" class="login-btn-main">Login</button>
+                </form>
+            </div>
+
+            <div id="signupTab" class="tab-content">
+                <h3>Create Account</h3>
+                <form id="signupForm">
+                    <div class="form-group">
+                        <input type="text" id="signupUsername" placeholder="Username" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="signupPassword" placeholder="Password" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="signupConfirmPassword" placeholder="Confirm Password" required>
+                    </div>
+                    <button type="submit" class="login-btn-main">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="article.js"></script>
+</body>
+
+</html>
